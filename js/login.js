@@ -33,10 +33,10 @@ function login(event) {
     setTimeout(() => {
         switch (userRole) {
             case "admin":
-                window.location.href = "home.html?role=admin";
+                window.location.href = "view.html?role=admin";
                 break;
             case "patient":
-                window.location.href = "home.html?role=patient";
+                window.location.href = "enter.html?role=patient";
                 break;
             default:
                 showNotification("Không có quyền truy cập", false);

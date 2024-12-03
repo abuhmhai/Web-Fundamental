@@ -5,11 +5,11 @@ const superRole = url.searchParams.get("role");
 // Hàm kiểm tra quyền truy cập
 function check_enter() {
     if (superRole === "admin") {
-        // Admin được phép vào form "Nhập"
+        // Admin được phép vào form "Xem"
         location.href = "view.html?role=admin";
     } else if (superRole === "patient") {
         // Patient chỉ được phép vào form "Đặt lịch"
-        location.href = "enter.html?role=patient";
+        location.href = "enter.html?role=patient"; 
     } else if (!superRole) {
         // Không có role
         showNotification("Bạn cần đăng nhập để truy cập chức năng này!");

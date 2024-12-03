@@ -7,29 +7,27 @@
     <link rel="stylesheet" href="../css/home.css">
 </head>
 <body>
-<section class="form-container">
-    <h2>Đặt lịch khám thành công!</h2>
-    <div id="success-details">
-        <!-- Thông tin sẽ được hiển thị ở đây -->
-    </div>
-    <button onclick="goBack()">OK</button>
+<section class="success-container">
+    <h2>Đặt Lịch Khám Thành Công!</h2>
+    <p id="success-details"></p>
+    <button onclick="goBack()">Quay lại Trang Chủ</button>
 </section>
 
 <script>
-    // Lấy dữ liệu từ URL và hiển thị
+    // Lấy dữ liệu từ URL
     const urlParams = new URLSearchParams(window.location.search);
     const name = urlParams.get("name");
     const specialty = urlParams.get("specialty");
     const doctor = urlParams.get("doctor");
 
-    const detailsDiv = document.getElementById("success-details");
-    detailsDiv.innerHTML = `
-        <p>Họ tên: ${name}</p>
-        <p>Chuyên khoa: ${specialty}</p>
-        <p>Bác sĩ: ${doctor}</p>
+    // Hiển thị thông tin đặt lịch
+    document.getElementById("success-details").innerHTML = `
+        <strong>Họ Tên:</strong> ${name}<br>
+        <strong>Chuyên Khoa:</strong> ${specialty}<br>
+        <strong>Bác Sĩ:</strong> ${doctor}
     `;
 
-    // Quay lại trang chủ
+    // Hàm quay lại trang chủ
     function goBack() {
         window.location.href = "home.html";
     }

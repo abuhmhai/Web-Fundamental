@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhập thông tin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/enter.css">
+</head>
+<body>
+<!--header section starts-->
+    <header>
+        <a href="home.html" class="logo"><img src="/image/logo1.png" alt=""></a>
+        <input type="checkbox" name="" hidden id="toggler">
+
+        <label for="toggler" class="fa-solid fa-bars"></label>
+
+        <nav class="navbar">
+            <a href="home.html">Trang chủ</a>
+            <a href="home.html">Giới thiệu</a>
+
+            <a href="view.html">Xem</a>
+            <a href="javascript:check_enter();">Nhập</a>
+            <a href="login.html">Đăng nhập</a>
+        </nav>
+        
+
+
+    </header>
+<!--header section ends-->
+
+<!-- body section stars -->
+    <section class="form-container">
+        <h2>Nhập thông tin hàng hóa</h2>
+        <form>
+            
+            <div class="box">
+                <label for="product-name">Tên hàng hóa:</label>
+                <input type="text" id="product-name" name="product-name" value="">
+            </div>
+
+            <div class="box">
+                <label for="product-num">Số lượng:</label>
+                <input type="number" id="product-num" name="product-num" value="">
+            </div>
+
+            <div class="box">
+                <label for="product-price">Giá bán:</label>
+                <input type="text" id="product-price" name="product-price" value="">
+            </div>
+
+            <div class="box button">
+                <button class="input-button" onclick="submit_form();">Lưu sản phẩm</button>
+                <button class="input-button" onclick="clear_inputs();">Xóa</button>
+            </div>
+                 
+        </form> 
+    </section>
+
+<!-- body section ends -->
+
+<!-- footer section starts -->
+<section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <img src="/image/logo.png" alt="">
+        </div>
+        <div class="box">
+            <h3>Social media</h3>
+            <div class="icons">
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-twitter"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-youtube"></i>
+            </div>
+        </div>
+        <div class="box">
+            <h3 class="middle">Contact with Us</h3>
+            <div class=contacts>
+                <a href=""><i class="fa-solid fa-phone"></i> 0878773737</a>
+                <a href=""><i class="fa-solid fa-envelope"></i> my-email@gmail.com</a>
+                <a href=""><i class="fa-solid fa-location-dot"></i> Ha Dong, Ha Noi</a>
+            </div>
+        </div>
+        
+
+    </div>
+
+    <div class="credit">  &copy; Copyright © 2024 Minh Hai | All rights reserved <br>
+       </div>
+
+</section>
+<!-- footer section ends -->
+
+<!-- link js -->
+    <script src="../js/enter.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/jquery.js"></script>
+
+</body>
+</html>

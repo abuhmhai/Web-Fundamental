@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
+html {
+    --main-color: #1E90FF;
+    --blue: #4682B4;
+    --red: #e74c3c;
+    --orange: #f39c12;
+    --white: #ffff;
+    --black: #2c3e50;
+    --light-color: #888;
+    --light-bg: #eee;
+    --border: .1rem solid rgba(0,0,0,.2);
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-padding-top: 9rem;
+    scroll-behavior: smooth;
+    background-color: var(--light-bg);
+}
+
+.manage {
+    display: block;
+    min-height: calc(100vh - 22rem); /* height = header height - footer height */
+    padding: 2rem 7%;
+}
+
+.manage {
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    margin-top: 9rem;
+}
+
+.manage .mt-4,.mb-4,.my-4 {
+    margin-top: 1.5rem;
+}
+
+.manage .container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    line-height: 1.5;
+}
+
+.manage .text-center {
+    text-align: center;
+}
+
+.manage h1 {
+    font-size: 2.5rem;
+    margin-bottom: .5rem;
+    line-height: 1.2;
+    margin-top: 0;
+    color: var(--black);
+    font-weight: bold;
+}
+
+.manage .row {
+    display: flex;
+    flex-wrap: wrap;
+    width: 55%;
+    margin: auto;
+}
+
+.manage .col-md-6 {
+    position: relative;
+    width: 100%;
+}
+
+.manage .form-control {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--black);
+    background-color: var(--white);
+    background-clip: padding-box;
+    border: 1px solid var(--light-color);
+    border-radius: 0.25rem;
+}
+
+.manage .table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: var(--primary);
+    margin-top: 20px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th {
+    text-align:inherit;
+}
+
+.manage thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #0d0d0e ;
+    padding: 0.75rem;
+    border-top: 1px solid black;
+}
+
+.manage .table td {
+    padding: 0.75rem;
+    border-top: 1px solid black;
+    vertical-align: top;
+}
+
+.manage .btn-sm {
+    padding: 1rem 2rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+}
+
+.manage .btn-sm:hover {
+    color: var(--black);
+}
+
+.manage .btn-warning {
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+}
+
+.manage .btn-danger {
+    background-color: var(--red);
+    border-color: var(--red);
+}
+
+.manage .card {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    min-width: 0;
+    background-color: var(--white);
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+
+.manage .card .card-header {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+.manage .card .card-header h4 {
+    font-weight: 500;
+    font-size: 2.5rem;
+}
+
+.manage .card .card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+}
+
+.manage .card .card-body .form-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+.manage .card .card-body .btn:hover {
+    color: var(--main-color);
+}
+
+
+.btn {
+    margin-top: 1rem;
+    display: inline-block;
+    padding: .9rem 3rem;
+    font-size: 2rem;
+    color:#ffff;
+    background-color: black;
+    cursor: pointer;
+}
+
+/* Nút "Sửa" */
+button.edit-btn {
+    background-color: #5ee6cc; /* Màu nền xanh */
+    color: white; /* Màu chữ trắng */
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 2px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+/* Nút "Xóa" */
+button.delete-btn {
+    background-color: #f44336; /* Màu nền đỏ */
+    color: white; /* Màu chữ trắng */
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 2px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.btn:hover {
+    color: var(--main-color);
+}
+
+@media (max-width:991px) {
+    html{
+        font-size: 55%;
+    }
+}
+
+@media (max-width:768px) {
+    .manage .row {
+        width: 100%;
+        margin: auto;
+    }
+    .manage .btn-sm {
+        display: inline;
+        font-size: 60%;
+    }
+    .manage .table {
+        font-size: 15px;
+    }
+    .manage .btn-sm {
+        padding: .5rem 1rem;
+        font-size: 13px;
+    }
+}

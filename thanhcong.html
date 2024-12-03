@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt Lịch Thành Công</title>
+    <link rel="stylesheet" href="../css/home.css">
+</head>
+<body>
+<section class="form-container">
+    <h2>Đặt lịch khám thành công!</h2>
+    <div id="success-details">
+        <!-- Thông tin sẽ được hiển thị ở đây -->
+    </div>
+    <button onclick="goBack()">OK</button>
+</section>
+
+<script>
+    // Lấy dữ liệu từ URL và hiển thị
+    const urlParams = new URLSearchParams(window.location.search);
+    const name = urlParams.get("name");
+    const specialty = urlParams.get("specialty");
+    const doctor = urlParams.get("doctor");
+
+    const detailsDiv = document.getElementById("success-details");
+    detailsDiv.innerHTML = `
+        <p>Họ tên: ${name}</p>
+        <p>Chuyên khoa: ${specialty}</p>
+        <p>Bác sĩ: ${doctor}</p>
+    `;
+
+    // Quay lại trang chủ
+    function goBack() {
+        window.location.href = "home.html";
+    }
+</script>
+</body>
+</html>

@@ -1,39 +1,64 @@
 function login(event) {
-    event.preventDefault(); // Prevent the default form submission
+    event.preventDefault(); // Ngăn chặn hành vi mặc định của form
 
-    var username = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
 
-    if (username == '') {
-        alert("Bạn vui lòng nhập tài khoản!");
-    } else if (password == '') {
-        alert("Bạn vui lòng nhập mật khẩu!");
+    if (email === '') {
+        showNotification("Bạn vui lòng nhập email!", false);
+        return;
+    } else if (password === '') {
+        showNotification("Bạn vui lòng nhập mật khẩu!", false);
+        return;
+    }
+
+    // Kiểm tra quyền đăng nhập
+    let userRole;
+
+    if (email === "admin@gmail.com" && password === "admin") {
+        showNotification("Đăng nhập thành công. Xin chào Admin!", true);
+        userRole = "admin";
+    } else if (email === "patient@gmail.com" && password === "1234") {
+        showNotification("Đăng nhập thành công. Xin chào Patient!", true);
+        userRole = "patient";
     } else {
-        var userRole;
+        showNotification("Tên đăng nhập hoặc mật khẩu không hợp lệ!", false);
+        return; // Thoát nếu thông tin đăng nhập không đúng
+    }
 
-        if (username == "u@gmail.com" && password == "1234") {
-            alert("Login successful. Hello user!");
-            userRole = "user";
-        } else if (username == "a@gmail.com" && password == "5678") {
-            alert("Login successful. Hello admin!");
-            userRole = "admin";
-        } else {
-            alert("Tên đăng nhập hoặc mật khẩu không hợp lệ");
-            return; // Exit if login credentials are invalid
-        }
-//Khi nhập số lượng lớn hơn 2 triệu, sử dụng kỹ thuật truyền tham số giữa 2 form qua URL, chương trình  hiện ra form xác nhận hàng này có giá trên 2 triệu đúng không, gồm 2 điều kiển ĐÚng, sai. Nếu đúng thì lưu hàng, nếu sai thì đóng form quay lại form Nhập
-        localStorage.setItem("role", userRole);
-        // Redirect based on the user's role
+    // Lưu quyền vào localStorage
+    localStorage.setItem("role", userRole);
+
+    // Chuyển hướng trang dựa trên quyền
+    setTimeout(() => {
         switch (userRole) {
             case "admin":
                 window.location.href = "home.html?role=admin";
                 break;
-            case "user":
-                window.location.href = "home.html?role=user";
+            case "patient":
+                window.location.href = "home.html?role=patient";
                 break;
             default:
-                alert("Không có quyền truy cập");
+                showNotification("Không có quyền truy cập", false);
                 break;
         }
-    }
+    }, 2000); // Chuyển trang sau 2 giây
+}
+
+function showNotification(message, isSuccess) {
+    const notification = document.getElementById("notification");
+    const messageBox = document.getElementById("notification-message");
+
+    messageBox.textContent = message;
+    notification.className = `notification ${isSuccess ? "success" : ""}`; // Thêm lớp success nếu thông báo thành công
+    notification.classList.remove("hidden");
+
+    setTimeout(() => {
+        notification.classList.add("hidden");
+    }, 4000); // Ẩn sau 4 giây
+}
+
+function closeNotification() {
+    const notification = document.getElementById("notification");
+    notification.classList.add("hidden");
 }

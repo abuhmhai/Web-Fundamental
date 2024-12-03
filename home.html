@@ -4,47 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang Chủ</title>
+    <title>Quản Lý Đăng Ký Khám Bệnh</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="../css/home.css">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
 </head>
 <body>
-<!--Kiểm tra email để lấy đưọc quyền của người sử dụng để có thể thao tác với các form(admin,user, visitor) admin được truy cập hết, user không cho Nhập, visitor hoặc rỗng thì chỉ cho Home, Giới Thiệu, Đăng Nhập -->
 <!--header section starts-->
-    <header>
-        <a href="home.html" class="logo"><img src="/image/logo1.png" alt=""></a>
-        <input type="checkbox" name=""  hidden id="toggler">
+<header>
+    <a href="home.html" class="logo"><img src="/image/logo1.png" alt="Logo"></a>
+    <input type="checkbox" name="" hidden id="toggler">
 
-        <label for="toggler" class="fa-solid fa-bars"></label>
+    <label for="toggler" class="fa-solid fa-bars"></label>
 
-        <nav class="navbar" data-rea>
-            <a href="home.html">Trang chủ</a>
-            <a href="home.html">Giới thiệu</a>
-            <a href="javascript:check_enter();">Xem</a>
-            <a href="javascript:check_enter();">Nhập</a>
-            <a href="login.html">Đăng nhập</a>
-        </nav>
-
-
-    </header>
+    <nav class="navbar">
+        <a href="home.html">Trang Chủ</a>
+        <a href="home.html">Giới Thiệu</a>
+        <a href="javascript:check_enter();">Xem Lịch Hẹn</a>
+        <a href="javascript:check_enter();">Đặt Lịch</a>
+        <a href="login.html">Đăng Nhập</a>
+    </nav>
+</header>
 <!--header section ends-->
+
 <!-- home start -->
 <section class="home" id="home">
     <div class="content">
-        <h3 class="home-title">Welcome to Restaurants</h3>
-        <a href="login.html" class="btn">Login Now</a>
+        <h3 class="home-title">Chào Mừng Đến Hệ Thống Quản Lý Khám Bệnh</h3>
+        <a href="login.html" class="btn">Đăng Nhập Ngay</a>
     </div>
 </section>
-<!-- home start -->
+<!-- home end -->
 
 <style>
     /* ===== Google Font Import - Poppins ===== */
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
 
-.home-title:before{
+.home-title:before {
     content: "";
-    position:relative;
+    position: relative;
     top: 0;
     left: 0;
     height: 100%;
@@ -54,139 +52,106 @@
     animation: animate 4s steps(12) infinite;
 }
 
-@keyframes animate{
-    40%, 60%{
+@keyframes animate {
+    40%, 60% {
         left: calc(100% + 4px);
     }
-    100%{
+    100% {
         left: 0%;
     }
 }
-
 </style>
+
 <script>
     const text = document.querySelector(".home-title");
-    let loadCount = 0;
-
     const changeText = () => {
         setTimeout(() => {
-            text.textContent = "Welcome Customers";
+            text.textContent = "Hỗ Trợ Đăng Ký Lịch Khám Bệnh";
         }, 0);
 
         setTimeout(() => {
-            text.textContent = "Welcome Authors";
+            text.textContent = "Đăng Ký Dễ Dàng, Tiện Lợi";
         }, 4000);
 
         setTimeout(() => {
-            text.textContent = "Explore Our Culinary Delights";
+            text.textContent = "Nhanh Chóng Và Chính Xác";
         }, 8000);
     };
 
-    const load = () => {
-        loadCount++;
-        if (loadCount <= 15) {
-            changeText();
-        }
-    };
-
-    // Initial load
-    load();
-
     // Repeat every 12 seconds
-    setInterval(load, 12000);
+    setInterval(changeText, 12000);
+    changeText();
 </script>
 
 <!-- about section starts -->
 <section class="about" id="about">
-    <h1 class="heading"> <span> about </span> us </h1>
+    <h1 class="heading"><span>Giới Thiệu</span></h1>
     <div class="row">
         <div class="video-container">
-            <video src="/image/Man Picking Books in Library 01 _ Free Stock Footage (4K).mp4" loop autoplay muted></video>
-            <h3>Explore Knowledge</h3>
+            <video src="/image/4K Hospital Notes .mp4" loop autoplay muted></video>
+            <h3>Hệ Thống Quản Lý Khám Bệnh Hiện Đại</h3>
         </div>
 
         <div class="content">
-            <h3>why choose us?</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                Dolorem accusantium consectetur ratione ullam iusto quisquam recusandae repudiandae, 
-                quos voluptatum vitae cumque delectus tempore vel odit libero nulla iste laborum rem!</p>
-
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                Nobis impedit voluptatibus iure laudantium reiciendis tempora eveniet reprehenderit velit possimus ut.</p>
-
-            <a href="#" class="btn">learn more</a>
+            <h3>Tại sao chọn chúng tôi?</h3>
+            <p>Chúng tôi cung cấp hệ thống đăng ký và quản lý lịch khám bệnh nhanh chóng, chính xác và tiện lợi. Đội ngũ hỗ trợ luôn sẵn sàng giúp đỡ bệnh nhân và bác sĩ.</p>
+            <p>Đảm bảo thông tin bảo mật, truy cập dễ dàng trên mọi thiết bị.</p>
+            <a href="#" class="btn">Tìm Hiểu Thêm</a>
         </div>
     </div>
+    
 </section>
 <!-- about section ends -->
 
-
-<!-- products section starts -->
+<!-- schedule section starts -->
 <section class="products" id="products">
-    <h1 class="heading">latest <span>products</span></h1>
+    <h1 class="heading">Lịch <span>Hẹn Khám</span></h1>
 
     <div class="box-container">
-
         <div class="box">
-            <div class="image">
-                <img src="/image/shopping-3.jpeg" alt="">
-                <ul class="icons">
-                    <li class="fa-regular fa-heart"></a>
-                    <li class="cart-btn">add to cart</a>
-                    <li class="fa-solid fa-share"></a>
-                </ul>
-            </div>
             <div class="content">
-                <h3>Book 1</h3>
-                <div class="price">$999</div>
+                <h3>Chuyên Khoa Nội</h3>
+                <p>Kiểm tra sức khỏe nội khoa toàn diện.</p>
+                <div class="btn-container">
+                    <a href="#" class="btn">Xem Lịch</a>
+                    <a href="#" class="btn">Đăng Ký</a>
+                </div>
             </div>
         </div>
 
         <div class="box">
-            <div class="image">
-                <img src="/image/shopping.jpeg" alt="">
-                <ul class="icons">
-                    <li class="fa-regular fa-heart"></a>
-                    <li class="cart-btn">add to cart</a>
-                    <li class="fa-solid fa-share"></a>
-                </ul>
-            </div>
             <div class="content">
-                <h3>Book 2</h3>
-                <div class="price">$999</div>
+                <h3>Chuyên Khoa Ngoại</h3>
+                <p>Đội ngũ bác sĩ phẫu thuật giàu kinh nghiệm.</p>
+                <div class="btn-container">
+                    <a href="#" class="btn">Xem Lịch</a>
+                    <a href="#" class="btn">Đăng Ký</a>
+                </div>
             </div>
         </div>
 
         <div class="box">
-            <div class="image">
-                <img src="/image/shopping-3.jpeg"  alt="">
-                <ul class="icons">
-                    <li class="fa-regular fa-heart"></a>
-                    <li class="cart-btn">add to cart</a>
-                    <li class="fa-solid fa-share"></a>
-                </ul>
-            </div>
             <div class="content">
-                <h3>Book 3</h3>
-                <div class="price">$999</div>
+                <h3>Chuyên Khoa Nhi</h3>
+                <p>Khám và tư vấn sức khỏe cho trẻ em.</p>
+                <div class="btn-container">
+                    <a href="#" class="btn">Xem Lịch</a>
+                    <a href="#" class="btn">Đăng Ký</a>
+                </div>
             </div>
         </div>
-
-        
     </div>
 </section>
-<!-- products section ends -->
+<!-- schedule section ends -->
 
 <!-- footer section starts -->
 <section class="footer">
-
     <div class="box-container">
-
         <div class="box">
-            <img src="/image/logo.png" alt="">
+            <img src="/image/logo.png" alt="Logo">
         </div>
         <div class="box">
-            <h3>Social media</h3>
+            <h3>Kết Nối Với Chúng Tôi</h3>
             <div class="icons">
                 <i class="fa-brands fa-facebook"></i>
                 <i class="fa-brands fa-twitter"></i>
@@ -195,26 +160,27 @@
             </div>
         </div>
         <div class="box">
-            <h3 class="middle">Contact with Us</h3>
-            <div class=contacts>
+            <h3>Liên Hệ</h3>
+            <div class="contacts">
                 <a href=""><i class="fa-solid fa-phone"></i> 0878773737</a>
-                <a href=""><i class="fa-solid fa-envelope"></i> my-email@gmail.com</a>
-                <a href=""><i class="fa-solid fa-location-dot"></i> Ha Dong, Ha Noi</a>
+                <a href=""><i class="fa-solid fa-envelope"></i> support@hospital.com</a>
+                <a href=""><i class="fa-solid fa-location-dot"></i> Hà Nội, Việt Nam</a>
             </div>
         </div>
-        
     </div>
 
-    <div class="credit"> &copy; Copyright © 2024 Minh Hai | All rights reserved </div>
-
+    <div class="credit">© 2024 Quản Lý Khám Bệnh | Mọi Quyền Được Bảo Lưu</div>
 </section>
 <!-- footer section ends -->
 
+    <!-- Notification Form -->
+    <div id="notification" class="notification hidden">
+        <span id="notification-message"></span>
+        <button onclick="closeNotification()" class="close-btn">&times;</button>
+    </div>
 <!-- link js -->
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/app.js"></script>
-    <script src="../js/login.js"></script>
-    <script src="../js/jquery.js"></script>
-    <script src="/script.js"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/app.js"></script>
+<script src="../js/login.js"></script>
 </body>
 </html>

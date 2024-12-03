@@ -2,65 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xem</title>
+    <title>Xem Lịch Hẹn</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/home.css">
     <link rel="stylesheet" href="../css/view.css">
 </head>
 <body onload="load_info()">    
-<!--header section starts-->
-    <header>
-        <a href="home.html" class="logo"><img src="/image/logo1.png" alt=""></a>
-        <input type="checkbox" hidden name="" id="toggler">
+<!-- Header -->
+<header>
+    <a href="home.html" class="logo"><img src="/image/logo1.png" alt="Logo"></a>
+    <nav class="navbar">
+        <a href="home.html">Trang Chủ</a>
+        <a href="home.html">Giới Thiệu</a>
+        <a href="view.html">Xem Lịch Hẹn</a>
+        <a href="javascript:check_enter();">Đặt Lịch</a>
+        <a href="login.html">Đăng Nhập</a>
+    </nav>
+</header>
+<!-- Header Ends -->
 
-        <label for="toggler" class="fa-solid fa-bars"></label>
+<!-- Main Content -->
+<section class="manage">
+    <div class="container mt-4">
+        <h1 class="text-center">Danh Sách Lịch Hẹn</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Họ Tên</th>
+                    <th>Số Điện Thoại</th>
+                    <th>Chuyên Khoa</th>
+                    <th>Bác Sĩ</th>
+                </tr>
+            </thead>
+            <tbody id="appointment-list">
+                <!-- Dữ liệu sẽ được thêm vào đây -->
+            </tbody>
+        </table>
+    </div>
+</section>
 
-        <nav class="navbar">
-            <a href="home.html">Trang chủ</a>
-            <a href="home.html">Giới thiệu</a>
-            <a href="view.html">Xem</a>
-            <a href="javascript:check_enter();">Nhập</a>
-            <a href="login.html">Đăng nhập</a>
-        </nav>
-
-    </header>
-<!--header section ends-->
-
-<!-- view section stars -->
-    <section class="manage">
-        <div class="container mt-4">
-            <h1 class="text-center">View products</h1>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Number</th>
-                        <th>Price</th>
-                        <th>Action</th>
-                        <th></th> <!-- Thêm cột Action -->
-                    </tr>
-                </thead>
-                <tbody id="prod-list">
-                    <!-- Information added here -->
-                </tbody>
-            </table>
-        </div>
-    </section>
-<!-- view section stars -->
-
-<!-- footer section starts -->
+<!-- Footer -->
 <section class="footer">
-
     <div class="box-container">
-
         <div class="box">
-            <img src="/image/foodies-logo-design-template-44f1cac34d28b362c02fd8079e141ad6_screen.jpg" alt="">
+            <img src="/image/logo.png" alt="Logo">
         </div>
         <div class="box">
-            <h3>Social media</h3>
+            <h3>Kết Nối Với Chúng Tôi</h3>
             <div class="icons">
                 <i class="fa-brands fa-facebook"></i>
                 <i class="fa-brands fa-twitter"></i>
@@ -69,23 +59,35 @@
             </div>
         </div>
         <div class="box">
-            <h3 class="middle">Contact with Us</h3>
-            <div class=contacts>
-                <a href=""><i class="fa-solid fa-phone"></i> 0878773737</a>
-                <a href=""><i class="fa-solid fa-envelope"></i> my-email@gmail.com</a>
-                <a href=""><i class="fa-solid fa-location-dot"></i> Ha Dong, Ha Noi</a>
-            </div>
+            <h3>Liên Hệ</h3>
+            <p><i class="fa-solid fa-phone"></i> 0878773737</p>
+            <p><i class="fa-solid fa-envelope"></i> support@hospital.com</p>
+            <p><i class="fa-solid fa-location-dot"></i> Hà Nội, Việt Nam</p>
         </div>
-        
-
     </div>
-
-    <div class="credit"> &copy; Copyright © 2024 Minh Hai | All rights reserved  </div>
-
+    <div class="credit">© 2024 Quản Lý Khám Bệnh</div>
 </section>
-<!-- footer section ends -->
-    <script src="../js/view.js"></script>
-    <script src="../js/app.js"></script>
-    <script src="../js/jquery.js"></script>
+
+<script>
+    // Tải dữ liệu từ localStorage và hiển thị trên bảng
+    function load_info() {
+        const appointmentList = JSON.parse(localStorage.getItem("appointments")) || [];
+        const tableBody = document.getElementById("appointment-list");
+
+        if (appointmentList.length === 0) {
+            tableBody.innerHTML = `<tr><td colspan="4" class="text-center">Không có lịch hẹn nào</td></tr>`;
+            return;
+        }
+
+        tableBody.innerHTML = appointmentList.map((appointment) => `
+            <tr>
+                <td>${appointment.name}</td>
+                <td>${appointment.phone}</td>
+                <td>${appointment.specialty}</td>
+                <td>${appointment.doctor}</td>
+            </tr>
+        `).join("");
+    }
+</script>
 </body>
 </html>

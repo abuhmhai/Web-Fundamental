@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@400;600;700&family=Kanit:ital,wght@0,300;1,200&family=Playpen+Sans:wght@100;200;300;400;500;600;700;800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;1,300&display=swap');
 
 :root{
-    --success-color: #00d06f;
+    --success-color: #60fff2;
 }
 
 *{
@@ -13,7 +13,7 @@
 body{
     width: 100%;
     min-height: 100vh;
-    background-image: url(/image/pexels-marcus-herzberg-1058277.jpg);
+    background-image: url(/image/186176.cc293f21.png);
     background-position: center;
     background-size: cover;
     font-family: 'Poppins';
@@ -31,7 +31,7 @@ html{
 }
 
 .container{
-    background: wheat;
+    background: rgb(255, 255, 255);
     width: 400px;
     border: none;
     border-radius: 10px;
@@ -69,6 +69,46 @@ html{
 
 .form-control input:focus ~ span {
     width: 100%;
+}
+/* Notification Styling */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #ff5252; /* Màu đỏ cho thông báo lỗi */
+    color: #fff;
+    padding: 15px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-size: 2rem;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.notification.success {
+    background: #4caf50; /* Màu xanh cho thông báo thành công */
+}
+
+.notification.hidden {
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.close-btn:hover {
+    color: #ddd;
 }
 
 .btn-submit{

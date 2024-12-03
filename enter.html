@@ -2,104 +2,109 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nhập thông tin</title>
+    <title>Nhập thông tin bệnh nhân</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="../css/home.css">
     <link rel="stylesheet" href="../css/enter.css">
 </head>
 <body>
 <!--header section starts-->
-    <header>
-        <a href="home.html" class="logo"><img src="/image/logo1.png" alt=""></a>
-        <input type="checkbox" name="" hidden id="toggler">
-
-        <label for="toggler" class="fa-solid fa-bars"></label>
-
-        <nav class="navbar">
-            <a href="home.html">Trang chủ</a>
-            <a href="home.html">Giới thiệu</a>
-
-            <a href="view.html">Xem</a>
-            <a href="javascript:check_enter();">Nhập</a>
-            <a href="login.html">Đăng nhập</a>
-        </nav>
-        
-
-
-    </header>
+<header>
+    <a href="home.html" class="logo"><img src="/image/logo1.png" alt="Logo"></a>
+    <nav class="navbar">
+        <a href="home.html">Trang chủ</a>
+        <a href="about.html">Giới thiệu</a>
+        <a href="view.html">Xem Lịch Hẹn</a>
+        <a href="javascript:check_enter();">Đặt Lịch</a>
+        <a href="login.html">Đăng nhập</a>
+    </nav>
+</header>
 <!--header section ends-->
 
-<!-- body section stars -->
-    <section class="form-container">
-        <h2>Nhập thông tin hàng hóa</h2>
-        <form>
-            
-            <div class="box">
-                <label for="product-name">Tên hàng hóa:</label>
-                <input type="text" id="product-name" name="product-name" value="">
-            </div>
+<!-- Form nhập thông tin bệnh nhân -->
+<section class="form-container">
+    <h2>Nhập thông tin bệnh nhân</h2>
+    <form id="patient-form" onsubmit="handleSubmit(event)">
+        <div class="box">
+            <label for="name">Họ tên bệnh nhân <span style="color: red;">*</span>:</label>
+            <input type="text" id="name" name="name" required placeholder="Nhập họ tên">
+        </div>
 
-            <div class="box">
-                <label for="product-num">Số lượng:</label>
-                <input type="number" id="product-num" name="product-num" value="">
-            </div>
+        <div class="box">
+            <label for="phone">Số điện thoại <span style="color: red;">*</span>:</label>
+            <input type="tel" id="phone" name="phone" required placeholder="Nhập số điện thoại" pattern="[0-9]{10}">
+        </div>
 
-            <div class="box">
-                <label for="product-price">Giá bán:</label>
-                <input type="text" id="product-price" name="product-price" value="">
-            </div>
+        <div class="box">
+            <label for="specialty">Chuyên khoa <span style="color: red;">*</span>:</label>
+            <select id="specialty" name="specialty" required onchange="updateDoctorOptions()">
+                <option value="">-- Chọn chuyên khoa --</option>
+                <option value="Nội">Nội</option>
+                <option value="Ngoại">Ngoại</option>
+            </select>
+        </div>
 
-            <div class="box button">
-                <button class="input-button" onclick="submit_form();">Lưu sản phẩm</button>
-                <button class="input-button" onclick="clear_inputs();">Xóa</button>
-            </div>
-                 
-        </form> 
-    </section>
+        <div class="box">
+            <label for="doctor">Bác sĩ <span style="color: red;">*</span>:</label>
+            <select id="doctor" name="doctor" required>
+                <option value="">-- Chọn bác sĩ --</option>
+            </select>
+        </div>
 
-<!-- body section ends -->
+        <div class="box button">
+            <button type="submit" class="btn-submit">Đặt lịch</button>
+        </div>
+    </form>
+</section>
 
 <!-- footer section starts -->
 <section class="footer">
-
     <div class="box-container">
-
         <div class="box">
-            <img src="/image/logo.png" alt="">
+            <h3>Liên hệ</h3>
+            <p><i class="fa-solid fa-phone"></i> 0878773737</p>
+            <p><i class="fa-solid fa-envelope"></i> support@hospital.com</p>
+            <p><i class="fa-solid fa-location-dot"></i> Hà Nội, Việt Nam</p>
         </div>
-        <div class="box">
-            <h3>Social media</h3>
-            <div class="icons">
-                <i class="fa-brands fa-facebook"></i>
-                <i class="fa-brands fa-twitter"></i>
-                <i class="fa-brands fa-instagram"></i>
-                <i class="fa-brands fa-youtube"></i>
-            </div>
-        </div>
-        <div class="box">
-            <h3 class="middle">Contact with Us</h3>
-            <div class=contacts>
-                <a href=""><i class="fa-solid fa-phone"></i> 0878773737</a>
-                <a href=""><i class="fa-solid fa-envelope"></i> my-email@gmail.com</a>
-                <a href=""><i class="fa-solid fa-location-dot"></i> Ha Dong, Ha Noi</a>
-            </div>
-        </div>
-        
-
     </div>
-
-    <div class="credit">  &copy; Copyright © 2024 Minh Hai | All rights reserved <br>
-       </div>
-
+    <div class="credit">© 2024 Quản Lý Khám Bệnh</div>
 </section>
 <!-- footer section ends -->
 
-<!-- link js -->
-    <script src="../js/enter.js"></script>
-    <script src="../js/app.js"></script>
-    <script src="../js/jquery.js"></script>
+<script>
+    // Cập nhật danh sách bác sĩ dựa vào chuyên khoa
+    function updateDoctorOptions() {
+        const specialty = document.getElementById("specialty").value;
+        const doctorSelect = document.getElementById("doctor");
 
+        // Xóa các lựa chọn trước đó
+        doctorSelect.innerHTML = '<option value="">-- Chọn bác sĩ --</option>';
+
+        // Thêm lựa chọn dựa vào chuyên khoa
+        if (specialty === "Nội") {
+            doctorSelect.innerHTML += '<option value="BS Nguyễn Văn Dũng">BS Nguyễn Văn Dũng</option>';
+            doctorSelect.innerHTML += '<option value="BS Trần Minh Quân">BS Trần Minh Quân</option>';
+        } else if (specialty === "Ngoại") {
+            doctorSelect.innerHTML += '<option value="BS Lê Thị Hồng">BS Lê Thị Hồng</option>';
+            doctorSelect.innerHTML += '<option value="BS Phạm Đức Thịnh">BS Phạm Đức Thịnh</option>';
+        }
+    }
+
+    // Xử lý submit form
+    function handleSubmit(event) {
+        event.preventDefault(); // Ngăn chặn hành vi mặc định của form
+
+        // Lấy dữ liệu từ form
+        const name = document.getElementById("name").value;
+        const phone = document.getElementById("phone").value;
+        const specialty = document.getElementById("specialty").value;
+        const doctor = document.getElementById("doctor").value;
+
+        // Chuyển dữ liệu qua URL
+        const url = `thanhcong.html?name=${encodeURIComponent(name)}&specialty=${encodeURIComponent(specialty)}&doctor=${encodeURIComponent(doctor)}`;
+        window.location.href = url;
+    }
+</script>
 </body>
 </html>

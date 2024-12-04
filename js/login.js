@@ -15,12 +15,12 @@ function login(event) {
     // Kiểm tra quyền đăng nhập
     let userRole;
 
-    if (email === "admin@gmail.com" && password === "admin") {
+    if (email === "a@gmail.com" && password === "admin") {
         showNotification("Đăng nhập thành công. Xin chào Admin!", true);
         userRole = "admin";
-    } else if (email === "patient@gmail.com" && password === "1234") {
-        showNotification("Đăng nhập thành công. Xin chào Patient!", true);
-        userRole = "patient";
+    } else if (email === "u@gmail.com" && password === "user") {
+        showNotification("Đăng nhập thành công. Xin chào User!", true);
+        userRole = "user";
     } else {
         showNotification("Tên đăng nhập hoặc mật khẩu không hợp lệ!", false);
         return; // Thoát nếu thông tin đăng nhập không đúng
@@ -33,10 +33,10 @@ function login(event) {
     setTimeout(() => {
         switch (userRole) {
             case "admin":
-                window.location.href = "view.html?role=admin";
+                window.location.href = "enter.html?role=admin";
                 break;
-            case "patient":
-                window.location.href = "enter.html?role=patient";
+            case "user":
+                window.location.href = "view.html?role=user";
                 break;
             default:
                 showNotification("Không có quyền truy cập", false);

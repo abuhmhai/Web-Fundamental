@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xem Lịch Hẹn</title>
+    <title>Xem Danh Sách Thực Tập</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/home.css">
     <link rel="stylesheet" href="../css/view.css">
 </head>
-<body onload="load_info()">    
+<body onload="loadInterns()">
 <!-- Header -->
 <header>
     <a href="home.html" class="logo"><img src="/image/logo1.png" alt="Logo"></a>
     <nav class="navbar">
         <a href="home.html">Trang Chủ</a>
-        <a href="home.html">Giới Thiệu</a>
-        <a href="view.html">Xem Lịch Hẹn</a>
-        <a href="javascript:check_enter();">Đặt Lịch</a>
+        <a href="about.html">Giới Thiệu</a>
+        <a href="view.html">Xem </a>
+        <a href="javascript:checkEnter();" class="btn-enter">Nhập</a>   
         <a href="login.html">Đăng Nhập</a>
     </nav>
 </header>
@@ -26,17 +26,17 @@
 <!-- Main Content -->
 <section class="manage">
     <div class="container mt-4">
-        <h1 class="text-center">Danh Sách Lịch Hẹn</h1>
+        <h1 class="text-center">Danh Sách Sinh Viên Thực Tập</h1>
         <table class="table">
             <thead>
                 <tr>
-                    <th>Họ Tên</th>
-                    <th>Số Điện Thoại</th>
-                    <th>Chuyên Khoa</th>
-                    <th>Bác Sĩ</th>
+                    <th>Tên Sinh Viên</th>
+                    <th>Email</th>
+                    <th>Vị Trí Thực Tập</th>
+                    <th>Framework</th>
                 </tr>
             </thead>
-            <tbody id="appointment-list">
+            <tbody id="intern-list">
                 <!-- Dữ liệu sẽ được thêm vào đây -->
             </tbody>
         </table>
@@ -60,31 +60,31 @@
         </div>
         <div class="box">
             <h3>Liên Hệ</h3>
-            <p><i class="fa-solid fa-phone"></i> 0878773737</p>
-            <p><i class="fa-solid fa-envelope"></i> support@hospital.com</p>
+            <p><i class="fa-solid fa-phone"></i> 0987654321</p>
+            <p><i class="fa-solid fa-envelope"></i> support@intern.com</p>
             <p><i class="fa-solid fa-location-dot"></i> Hà Nội, Việt Nam</p>
         </div>
     </div>
-    <div class="credit">© 2024 Quản Lý Khám Bệnh</div>
+    <div class="credit">© 2024 Quản Lý Sinh Viên Thực Tập</div>
 </section>
 
 <script>
     // Tải dữ liệu từ localStorage và hiển thị trên bảng
-    function load_info() {
-        const appointmentList = JSON.parse(localStorage.getItem("appointments")) || [];
-        const tableBody = document.getElementById("appointment-list");
+    function loadInterns() {
+        const internList = JSON.parse(localStorage.getItem("interns")) || [];
+        const tableBody = document.getElementById("intern-list");
 
-        if (appointmentList.length === 0) {
-            tableBody.innerHTML = `<tr><td colspan="4" class="text-center">Không có lịch hẹn nào</td></tr>`;
+        if (internList.length === 0) {
+            tableBody.innerHTML = `<tr><td colspan="4" class="text-center">Không có sinh viên nào</td></tr>`;
             return;
         }
 
-        tableBody.innerHTML = appointmentList.map((appointment) => `
+        tableBody.innerHTML = internList.map((intern) => `
             <tr>
-                <td>${appointment.name}</td>
-                <td>${appointment.phone}</td>
-                <td>${appointment.specialty}</td>
-                <td>${appointment.doctor}</td>
+                <td>${intern.name}</td>
+                <td>${intern.email}</td>
+                <td>${intern.position}</td>
+                <td>${intern.framework}</td>
             </tr>
         `).join("");
     }

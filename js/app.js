@@ -1,42 +1,59 @@
-// Lấy role từ URL
+// Get email from URL
 const url = new URL(window.location.href);
-const superRole = url.searchParams.get("role");
+const superEmail = url.searchParams.get("email");
 
-// Hàm kiểm tra quyền truy cập
-function check_enter() {
-    if (superRole === "admin") {
-        // Admin được phép vào form "Xem"
-        location.href = "view.html?role=admin";
-    } else if (superRole === "patient") {
-        // Patient chỉ được phép vào form "Đặt lịch"
-        location.href = "enter.html?role=patient"; 
-    } else if (!superRole) {
-        // Không có role
+// Roles definition
+const roles = {
+    "a@gmail.com": "admin", // Admin with full permissions
+    "u@gmail.com": "user",  // User with restricted permissions
+    // Default roles for others or empty emails
+};
+
+// Check user access
+function checkEnter(action) {
+    const role = roles[superEmail] || "visitor";
+
+    if (role === "admin") {
+        // Admin can access both "Nhập" and "Xem"
+        if (action === "enter") {
+            location.href = `nhap.html?email=${encodeURIComponent(superEmail)}&role=admin`;
+        } else if (action === "view") {
+            location.href = `view.html?email=${encodeURIComponent(superEmail)}&role=admin`;
+        }
+    } else if (role === "user") {
+        // User can only access "Xem"
+        if (action === "view") {
+            location.href = `view.html?email=${encodeURIComponent(superEmail)}&role=user`;
+        } else if (action === "enter") {
+            showNotification("Bạn không có quyền truy cập chức năng này!");
+        }
+    } else if (!superEmail) {
+        // No email: login required
         showNotification("Bạn cần đăng nhập để truy cập chức năng này!");
     } else {
-        // Không có quyền
+        // Default for unauthorized access
         showNotification("Bạn không có quyền truy cập chức năng này!");
     }
 }
 
-// Hàm hiển thị thông báo
+// Show notification
 function showNotification(message) {
     const notification = document.getElementById("notification");
     const messageBox = document.getElementById("notification-message");
 
-    // Cập nhật nội dung thông báo
+    // Set notification message
     messageBox.textContent = message;
     notification.classList.remove("hidden");
     notification.style.display = "block";
 
-    // Tự động đóng thông báo sau 4 giây
+    // Hide notification after 4 seconds
     setTimeout(() => {
         notification.classList.add("hidden");
         notification.style.display = "none";
     }, 4000);
 }
 
-// Hàm đóng thông báo bằng nút "Đóng"
+// Close notification on button click
 function closeNotification() {
     const notification = document.getElementById("notification");
     notification.classList.add("hidden");

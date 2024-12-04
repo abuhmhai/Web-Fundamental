@@ -1,17 +1,19 @@
 // Ngăn chặn nhập ký tự không hợp lệ vào trường Số điện thoại
 document.querySelector("#phone").addEventListener("keypress", function (evt) {
-    if (evt.which < 48 || evt.which > 57) {
+    const charCode = evt.which || evt.keyCode;
+    if (charCode < 48 || charCode > 57) {
         evt.preventDefault(); // Chỉ cho phép nhập số
     }
 });
 
 // Ngăn chặn nhập số hoặc ký tự không hợp lệ vào trường Họ tên
 document.querySelector("#name").addEventListener("keypress", function (evt) {
-    var charCode = evt.which || evt.keyCode;
-    var charStr = String.fromCharCode(charCode);
+    const charCode = evt.which || evt.keyCode;
+    const charStr = String.fromCharCode(charCode);
 
+    // Ngăn không cho nhập số
     if (/\d/.test(charStr)) {
-        evt.preventDefault(); // Ngăn không cho nhập số
+        evt.preventDefault();
     }
 });
 
@@ -39,6 +41,13 @@ function submitForm() {
     // Kiểm tra số điện thoại có 10 chữ số
     if (phone.length !== 10) {
         showNotification("Số điện thoại phải có 10 chữ số!", false);
+        return;
+    }
+
+    // Kiểm tra số điện thoại là hợp lệ (chỉ chứa số và không có ký tự khác)
+    const phonePattern = /^[0-9]{10}$/;
+    if (!phonePattern.test(phone)) {
+        showNotification("Số điện thoại không hợp lệ!", false);
         return;
     }
 

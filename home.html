@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản Lý Đăng Ký Khám Bệnh</title>
+    <title>Quản Lý Sinh Viên Thực Tập</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="../css/home.css">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
 <!--header section starts-->
@@ -20,8 +23,8 @@
     <nav class="navbar">
         <a href="home.html">Trang Chủ</a>
         <a href="home.html">Giới Thiệu</a>
-        <a href="javascript:check_enter();">Xem Lịch Hẹn</a>
-        <a href="javascript:check_enter();">Đặt Lịch</a>
+        <a href="javascript:checkEnter();" class="btn-view">Xem</a>
+        <a href="javascript:checkEnter();" class="btn-enter">Nhập</a>   
         <a href="login.html">Đăng Nhập</a>
     </nav>
 </header>
@@ -30,14 +33,13 @@
 <!-- home start -->
 <section class="home" id="home">
     <div class="content">
-        <h3 class="home-title">Chào Mừng Đến Hệ Thống Quản Lý Khám Bệnh</h3>
+        <h3 class="home-title">Chào Mừng Đến Hệ Thống Quản Lý Sinh Viên Thực Tập</h3>
         <a href="login.html" class="btn">Đăng Nhập Ngay</a>
     </div>
 </section>
 <!-- home end -->
 
 <style>
-    /* ===== Google Font Import - Poppins ===== */
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
 
 .home-title:before {
@@ -66,19 +68,18 @@
     const text = document.querySelector(".home-title");
     const changeText = () => {
         setTimeout(() => {
-            text.textContent = "Hỗ Trợ Đăng Ký Lịch Khám Bệnh";
+            text.textContent = "Quản Lý Sinh Viên Dễ Dàng";
         }, 0);
 
         setTimeout(() => {
-            text.textContent = "Đăng Ký Dễ Dàng, Tiện Lợi";
+            text.textContent = "Theo Dõi Quá Trình Thực Tập Chính Xác";
         }, 4000);
 
         setTimeout(() => {
-            text.textContent = "Nhanh Chóng Và Chính Xác";
+            text.textContent = "Hỗ Trợ Tốt Nhất Cho Doanh Nghiệp";
         }, 8000);
     };
 
-    // Repeat every 12 seconds
     setInterval(changeText, 12000);
     changeText();
 </script>
@@ -88,61 +89,43 @@
     <h1 class="heading"><span>Giới Thiệu</span></h1>
     <div class="row">
         <div class="video-container">
-            <video src="/image/4K Hospital Notes .mp4" loop autoplay muted></video>
-            <h3>Hệ Thống Quản Lý Khám Bệnh Hiện Đại</h3>
+            <video src="/image/YTDown.net_YouTube_CMC-Tap-doan-Cong-nghe-CMC-dong-hanh-cun_Media_1soydLxExmg_001_1080p.mp4" loop autoplay muted></video>
+            <h3>Hệ Thống Quản Lý Sinh Viên Thực Tập Hiện Đại</h3>
         </div>
 
         <div class="content">
             <h3>Tại sao chọn chúng tôi?</h3>
-            <p>Chúng tôi cung cấp hệ thống đăng ký và quản lý lịch khám bệnh nhanh chóng, chính xác và tiện lợi. Đội ngũ hỗ trợ luôn sẵn sàng giúp đỡ bệnh nhân và bác sĩ.</p>
-            <p>Đảm bảo thông tin bảo mật, truy cập dễ dàng trên mọi thiết bị.</p>
+            <p>Chúng tôi cung cấp hệ thống quản lý sinh viên thực tập đơn giản và hiệu quả. 
+               Dễ dàng theo dõi tiến độ, cập nhật thông tin sinh viên và hỗ trợ kết nối với doanh nghiệp.</p>
             <a href="#" class="btn">Tìm Hiểu Thêm</a>
         </div>
     </div>
-    
 </section>
 <!-- about section ends -->
 
-<!-- schedule section starts -->
+<!-- students section starts -->
 <section class="products" id="products">
-    <h1 class="heading">Lịch <span>Hẹn Khám</span></h1>
+    <h1 class="heading">Sinh Viên <span>Thực Tập</span></h1>
 
     <div class="box-container">
         <div class="box">
             <div class="content">
-                <h3>Chuyên Khoa Nội</h3>
-                <p>Kiểm tra sức khỏe nội khoa toàn diện.</p>
-                <div class="btn-container">
-                    <a href="#" class="btn">Xem Lịch</a>
-                    <a href="#" class="btn">Đăng Ký</a>
-                </div>
+                <h3>Danh Sách Sinh Viên</h3>
+                <p>Hiển thị danh sách chi tiết sinh viên thực tập.</p>
+                <a href="javascript:check_enter();" class="btn">Xem Danh Sách</a>
             </div>
         </div>
 
         <div class="box">
             <div class="content">
-                <h3>Chuyên Khoa Ngoại</h3>
-                <p>Đội ngũ bác sĩ phẫu thuật giàu kinh nghiệm.</p>
-                <div class="btn-container">
-                    <a href="#" class="btn">Xem Lịch</a>
-                    <a href="#" class="btn">Đăng Ký</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="box">
-            <div class="content">
-                <h3>Chuyên Khoa Nhi</h3>
-                <p>Khám và tư vấn sức khỏe cho trẻ em.</p>
-                <div class="btn-container">
-                    <a href="#" class="btn">Xem Lịch</a>
-                    <a href="#" class="btn">Đăng Ký</a>
-                </div>
+                <h3>Thêm Sinh Viên</h3>
+                <p>Nhập thông tin sinh viên mới để theo dõi quá trình thực tập.</p>
+                <a href="javascript:check_enter();" class="btn">Thêm Mới</a>
             </div>
         </div>
     </div>
 </section>
-<!-- schedule section ends -->
+<!-- students section ends -->
 
 <!-- footer section starts -->
 <section class="footer">
@@ -162,23 +145,22 @@
         <div class="box">
             <h3>Liên Hệ</h3>
             <div class="contacts">
-                <a href=""><i class="fa-solid fa-phone"></i> 0878773737</a>
-                <a href=""><i class="fa-solid fa-envelope"></i> support@hospital.com</a>
-                <a href=""><i class="fa-solid fa-location-dot"></i> Hà Nội, Việt Nam</a>
+                <a href=""><i class="fa-solid fa-phone"></i> 0987654321</a>
+                <a href=""><i class="fa-solid fa-envelope"></i> support@studentmanagement.com</a>
+                <a href=""><i class="fa-solid fa-location-dot"></i> Hà Nội Việt Nam</a>
             </div>
         </div>
     </div>
-
-    <div class="credit">© 2024 Quản Lý Khám Bệnh | Mọi Quyền Được Bảo Lưu</div>
+    <div class="credit">© 2024 Quản Lý Sinh Viên Thực Tập | Mọi Quyền Được Bảo Lưu</div>
 </section>
 <!-- footer section ends -->
 
-    <!-- Notification Form -->
-    <div id="notification" class="notification hidden">
-        <span id="notification-message"></span>
-        <button onclick="closeNotification()" class="close-btn">&times;</button>
-    </div>
-<!-- link js -->
+<!-- Notification Form -->
+<div id="notification" class="notification hidden">
+    <span id="notification-message"></span>
+    <button onclick="closeNotification()" class="close-btn">&times;</button>
+</div>
+
 <script src="../js/jquery.min.js"></script>
 <script src="../js/app.js"></script>
 <script src="../js/login.js"></script>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Ký Thành Công</title>
+    <link rel="stylesheet" href="../css/home.css">
+</head>
+<body>
+<section class="success-container">
+    <h2>Chúc mừng, bạn đã đăng ký thực tập thành công!</h2>
+    <p id="success-details"></p>
+    <button onclick="goBack()">Quay lại</button>
+</section>
+
+<script>
+    // Retrieve data from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const name = urlParams.get("name");
+    const email = urlParams.get("email");
+    const position = urlParams.get("position");
+    const framework = urlParams.get("framework");
+
+    // Display the data
+    document.getElementById("success-details").innerHTML = `
+        <strong>Họ Tên:</strong> ${name}<br>
+        <strong>Email:</strong> ${email}<br>
+    `;
+
+    // Redirect to home page
+    function goBack() {
+        window.location.href = "view.html";
+    }
+</script>
+</body>
+</html>
